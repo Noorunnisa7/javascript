@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #btn{
+            background-color: black;
+            color: aliceblue;
+            font-size: 20px;
+            position: fixed;
+            bottom: 5%;
+            right: 5%;
+            padding: 20px;
+            opacity:0;
+        }
+        #css_gradient{
+            width: 200px;
+            height: 200px;
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+<h1>Search Box</h1>
+<input id="input_data" placeholder="Search here....">
+<ul id="list_item">
+    <li>Html</li>
+    <li>CSS</li>
+    <li>JS</li>
+    <li>Bootstrap</li>
+    <li>Jquery</li>
+    <li>Seo</li>
+    <li>Php</li>
+    <li>laravel</li>
+    <li>wordpress</li>
+    <li>git</li>
+    <li>xml</li>
+</ul>
+
+    <p style="font-size: 40px;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque tempora nostrum ullam alias repudiandae eaque laudantium provident porro ut expedita. Fuga, doloribus voluptatibus! Quae quo maiores eligendi eveniet, obcaecati illo alias officia saepe sed ipsum ea odit, consequuntur, reiciendis atque quia soluta voluptates. Sunt quas nemo dolore, reiciendis commodi necessitatibus expedita illum? Consequatur corrupti temporibus molestias minima numquam velit! Provident ipsa nisi nostrum, doloremque deleniti quia, sed odio ut magnam cumque fuga maxime praesentium error iusto recusandae, placeat quos? Minus necessitatibus quae assumenda reiciendis amet nostrum eos tenetur error ratione atque, eaque perferendis quas dolores molestias illo. Odit magni architecto voluptas repellendus, esse animi nulla. Corporis, odio id! Voluptatem ea quia consectetur, est nihil tempore accusamus, voluptates, vero eum consequatur unde repellat iusto! Hic nisi neque necessitatibus. Soluta, iste necessitatibus eius eligendi nulla magnam? Assumenda corrupti voluptate unde quasi, dolores quis natus perferendis necessitatibus sequi voluptates consectetur est odio fugiat temporibus suscipit illum consequuntur! Eos eius nostrum numquam omnis facilis hic architecto, ipsum necessitatibus obcaecati est, incidunt earum beatae facere sit provident cum cupiditate in saepe! Sunt, dolores odit? Optio quae fugiat ipsam similique adipisci possimus officiis assumenda, exercitationem nam, autem nulla suscipit ex esse dicta. Accusamus, provident nostrum! Incidunt nemo vitae praesentium. Neque numquam nesciunt quam fuga tenetur, facere eligendi architecto aliquid reiciendis ipsam deleniti nihil, veritatis vitae dolorem voluptatibus repellat magnam, a nisi ab eos natus nulla eum iusto modi. Voluptates mollitia aut harum cupiditate reiciendis. Ut libero nobis fugiat porro, rem dolorum accusamus aut! Explicabo possimus, optio nihil quaerat earum, reiciendis odit laborum qui accusantium quos libero consequuntur nisi praesentium obcaecati sit nulla nam ipsa aliquid consectetur tempora? Rerum quos voluptatum facilis, maxime itaque velit ut architecto, aliquam eaque doloribus aut optio deserunt iste, sed corporis cum laborum. Maiores alias architecto nostrum tenetur non cum suscipit ut!</p>
+
+
+
+    
+    <div id="css_gradient"></div>
+    <button id="btn_color">
+        Make gradient
+    </button>
+    
+    <input type="color" id="color_input">
+    <input type="color" id="color_input1">
+    <p id="text"></p>
+
+
+
+
+    <button id="btn">Back to Top</button>
+
+    <script>
+
+
+     document.getElementById('input_data').addEventListener('input', function(){
+           let search_data =  this.value.toLowerCase()
+           console.log(search_data)
+           let list_data = document.querySelectorAll('#list_item li')
+           list_data.forEach(function(item){
+            let li_data = item.innerText.toLowerCase();
+            if(li_data.includes(search_data)){
+                item.style.display = 'linear-gradient(90deg, rgba(201,198,250,1) 0%, rgba(215,255,195,1) 35%, rgba(46,135,154,1) 100%)';
+            }
+            else{
+                item.style.display = 'none';
+            }
+           })
+
+     })
+
+
+document.getElementById('btn_color').addEventListener('click', function(){
+    let color = document.getElementById('color_input')
+    let color1 = document.getElementById('color_input1')
+     let gradient = document.getElementById('css_gradient')
+     gradient.style.background = 'linear-gradient('+color.value+' 0% , '+color1.value+' 100%)';
+})
+
+
+
+
+        document.addEventListener('scroll', function(){
+            // alert('Page scrolled');
+            // console.log("Scroll Y "+window.scrollY);
+            // console.log("Scroll X "+window.scrollX)
+            let element = document.getElementById('btn');
+            if(window.scrollY > 400){
+                element.style.opacity = '1';
+                element.style.transition ='0.5s';
+            }
+            else{
+                element.style.opacity = '0';
+                element.style.transition ='0.5s';
+            }
+        });
+
+
+
+    </script>
+</body>
+</html>

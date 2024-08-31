@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p id="data"></p>
+    <p id="data2"></p>
+    <p id="data3"></p>
+    <p id="books"></p>
+    <script>
+        let myobj = {
+            name : 'Ali',
+            age  : 21,
+            fathername: 'hyder',
+            class : 'inter'
+        }
+        document.getElementById('data').innerHTML = "My name is "+myobj.name +". My age :"+myobj.age+" Father name : "+ myobj.fathername + " Class :"+myobj.class;
+
+        document.getElementById('data2').innerHTML = "My name is "+myobj['name'] +". My age :"+myobj['age']+" Father name : "+ myobj['fathername'] + " Class :"+myobj['class'];
+
+
+        let data = new Object();
+
+        data.name = "Zain",
+        data.age =  20;
+
+        document.getElementById('data3').innerHTML =  data['name']
+
+        let nested_object =  {
+            name : 'Ali',
+            age  : 21,
+            fathername: 'hyder',
+            class : 'inter',
+            studentdetails :{
+                maths : 50,
+                english : 55,
+                total   : 105,
+                grade   : 'B'
+            }
+        }
+
+        // document.getElementById('data4').innerHTML = nested_object['studentdetails']['maths']
+    
+
+        let student_data = {
+            student1 : {
+                name : 'Ali',
+                age  : 21,
+                maths : 50,
+                english : 55,
+                total   : 105,
+                grade   : 'B'
+            },
+            student2 : {
+                name : 'Saad',
+                age  : 20,
+                maths : 50,
+                english : 550,
+                total   : 105,
+                grade   : 'A1'
+            },
+            student3 : {
+                name : 'zain',
+                age  : 22,
+                maths : 50,
+                english : 55,
+                total   : 105,
+                grade   : 'A'
+            }
+        }
+        for(let x in student_data){
+            console.log("Outer Loop "+x)
+            for(let y in student_data[x]){
+                // console.log("inner loop "+y)
+                console.log("Values " + student_data[x][y])
+            }
+        }
+
+
+
+
+    
+        // for (let x in student_data) {
+        //        console.log(x)
+        //        for(let y in student_data[x]){
+        //         console.log(student_data[x][y])
+        //        }
+        // }
+
+
+        class book{
+            constructor(title,author,year){
+                this.title = title,
+                this.author = author,
+                this.year = year
+            }
+            bookDetails(){
+                document.write(this.title + " is written by "+ this.author +" in "+this.year)
+            }
+
+            isOld(){
+                let currentYear = new Date().getFullYear();
+                if(currentYear - this.year > 10){
+                    document.write(this.title + " is Old Book")
+                }
+                else{
+                    document.write(this.title + " is Modern Book")
+                }
+            }
+        }
+        
+        let book1 = new book("Guman","jaun elia",2023);
+        let book2 = new book("Shayad",'jaun elia',2000)
+        book1.bookDetails()
+        document.write('<br>')
+        book2.bookDetails()
+        document.write('<br>')
+        book1.isOld()
+        document.write('<br>')
+        book2.isOld()
+        document.write('<br>')
+        new book("haqeeqat",'Galib',1965).bookDetails()
+        document.write('<br>')
+        new book("haqeeqat",'Galib',1965).isOld()
+// document.write(new Date().getFullYear() - 2014)
+    </script>
+</body>
+</html>

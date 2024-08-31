@@ -1,0 +1,65 @@
+
+<section style="height: 900px; background-color: black;"></section>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12">
+        <h2 class="main_heading">Counter</h2>
+      </div>
+    </div>
+    <div class="numbering_section">
+      <div class="count_num">
+      <h3 class="count_heading" id="count_1">1000</h3>
+      <p class="sub_heading">abc</p>
+    </div>
+    </div>
+    <div class="numbering_section">
+        <div class="count_num">
+        <h3 class="count_heading" id="count_2">2000</h3>
+        <p class="sub_heading">abc</p>
+      </div>
+      </div>
+      <div class="numbering_section">
+        <div class="count_num">
+        <h3 class="count_heading" id="count_3">55</h3>
+        <p class="sub_heading">abc</p>
+      </div>
+      </div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script>
+
+$(document).ready(function(){
+
+    function isElementInViewport(elem) {
+      var rect = elem.getBoundingClientRect();
+      return (
+          rect.top >= 0 &&
+          rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      );
+  }
+
+
+    function startCountAnimation() {
+      $('.count_heading').each(function () {
+          if (isElementInViewport(this) && !$(this).hasClass('counted')) {
+              $(this).addClass('counted').prop('Counter', 0).animate({
+                  Counter: $(this).text()
+              }, {
+                  duration: 2500,
+                  easing: 'swing',
+                  step: function (now) {
+                      var formattedNumber = Math.ceil(now).toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+                      $(this).text(formattedNumber);
+                  }
+              });
+          }
+      });
+  }
+  
+  $(window).on('scroll', function () {
+      startCountAnimation();
+  });
+  startCountAnimation();
+})
+</script>
